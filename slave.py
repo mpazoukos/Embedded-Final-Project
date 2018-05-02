@@ -99,7 +99,7 @@ try:
 	print ("Angle of the Vector: " + str(ang_vect))
 	print ("Distance: " + str(dist))
 
-	if dist <= 0.2:
+	if dist <= 0.1:
 			tracking.update()
 			s.send(stop)
 			sleep(0.1)
@@ -107,8 +107,8 @@ try:
 	elif abs(ang_vect - angle_robot) <= 10:
 		print("YOU ARE POINTING AT IT BABY")
 		s.send(stop)
-		s.send('FF020125FF'.decode('hex')) # Left motor speed
-		s.send('FF020225FF'.decode('hex')) # Right motor speed
+		s.send('FF020135FF'.decode('hex')) # Left motor speed
+		s.send('FF020235FF'.decode('hex')) # Right motor speed
 		sleep(0.01)
 		s.send(forward)
 		sleep(0.05)
@@ -116,7 +116,7 @@ try:
 		s.send(stop)
 	else:
 		rotate = False
-		if dist > 0.22:
+		if dist > 0.18:
 			if left_angle <= right_angle:
 				if left_angle >= 80:
 					rotate = True
